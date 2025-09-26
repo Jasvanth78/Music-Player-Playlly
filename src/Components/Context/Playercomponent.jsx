@@ -5,7 +5,7 @@ export const Playercomponent = createContext();
 
 const PlayercomponentProvider = (props) => {
   const [post, setPost] = useState([]);
-  const [track, setTrack] = useState(null);
+  const [track, setTrack] = useState(0);
   const [playStatus, setPlayStatus] = useState(false);
   const [time, setTime] = useState({
     currentTime: { seconds: 0, minutes: 0 },
