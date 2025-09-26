@@ -17,6 +17,7 @@ const PlayercomponentProvider = (props) => {
   const seekBar = useRef();
 
   // fetch songs
+  
   useEffect(() => {
     const url = "https://spotgpt-backend.onrender.com/api/song/list";
     axios
@@ -25,6 +26,10 @@ const PlayercomponentProvider = (props) => {
         console.log(res.data);
         setPost(res.data.songs);
         setTrack(res.data.songs[0]); 
+        setTime({
+          currentTime: { seconds: 0, minutes: 0 },
+          totalTime: { seconds: Math.floor(res.data.songs[0].duration % 60), minutes: Math.floor(res.data.songs[0].duration / 60) },
+        });
       })
       .catch((error) => console.error("Error:", error));
   }, []);
